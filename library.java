@@ -50,9 +50,8 @@ class Library {
         books = new ArrayList<>();
     }
 
-    // Add a new book to the library
-    public void addBook(Book book) {
-        // Check for unique ID
+    // Add a new book to the library with an option to suppress success message
+    public void addBook(Book book, boolean showMessage) {
         for (Book b : books) {
             if (b.getId() == book.getId()) {
                 System.out.println("A book with ID " + book.getId() + " already exists: " + b.getTitle());
@@ -60,7 +59,9 @@ class Library {
             }
         }
         books.add(book);
-        System.out.println("Book added successfully: " + book.getTitle());
+        if (showMessage) {
+            System.out.println("Book added successfully: " + book.getTitle());
+        }
     }
 
     // Remove a book by ID
@@ -138,10 +139,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Library library = new Library();
 
-        // Adding sample books
-        library.addBook(new Book("Mein Kampf", "Adolf Hitler", 1));
-        library.addBook(new Book("Macbeth", "William Shakespeare", 2));
-        library.addBook(new Book("Waste Land", "T.S. Eliot", 3));
+        // Adding sample books without printing success messages
+        addSampleBooks(library);
 
         while (true) {
             System.out.println("\nLibrary Management System");
@@ -172,7 +171,7 @@ public class Main {
                     String author = scanner.nextLine();
                     System.out.print("Enter book ID: ");
                     int id = scanner.nextInt();
-                    library.addBook(new Book(title, author, id));
+                    library.addBook(new Book(title, author, id), true);
                     break;
                 case 2:
                     System.out.print("Enter book ID to remove: ");
@@ -209,5 +208,11 @@ public class Main {
             }
         }
     }
-}
 
+    // Method to add sample books without printing messages
+    private static void addSampleBooks(Library library) {
+        library.addBook(new Book("Mein Kampf", "Adolf Hitler", 1), false);
+        library.addBook(new Book("Macbeth", "William Shakespeare", 2), false);
+        library.addBook(new Book("Waste Land", "T.S. Eliot", 3), false);
+    }
+}
