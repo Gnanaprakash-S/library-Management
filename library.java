@@ -55,12 +55,12 @@ class Library {
         // Check for unique ID
         for (Book b : books) {
             if (b.getId() == book.getId()) {
-                System.out.println("A book with this ID already exists.");
+                System.out.println("A book with ID " + book.getId() + " already exists: " + b.getTitle());
                 return;
             }
         }
         books.add(book);
-        System.out.println("Book added successfully.");
+        System.out.println("Book added successfully: " + book.getTitle());
     }
 
     // Remove a book by ID
@@ -139,9 +139,9 @@ public class Main {
         Library library = new Library();
 
         // Adding sample books
-        library.addBook(new Book("Mein Kamph", "Adolf Hitler", 1));
+        library.addBook(new Book("Mein Kampf", "Adolf Hitler", 1));
         library.addBook(new Book("Macbeth", "William Shakespeare", 2));
-        library.addBook(new Book("Waste Land","T.S Eliot", 3));
+        library.addBook(new Book("Waste Land", "T.S. Eliot", 3));
 
         while (true) {
             System.out.println("\nLibrary Management System");
@@ -153,14 +153,14 @@ public class Main {
             System.out.println("6. Display Available Books");
             System.out.println("7. Exit");
             System.out.print("Choose an option: ");
-            
+
             // Validate input
             if (!scanner.hasNextInt()) {
                 System.out.println("Invalid input. Please enter a number.");
                 scanner.next(); // Consume the invalid input
                 continue;
             }
-            
+
             int choice = scanner.nextInt();
 
             switch (choice) {
@@ -210,3 +210,4 @@ public class Main {
         }
     }
 }
+
