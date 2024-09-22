@@ -139,9 +139,9 @@ public class Main {
         Library library = new Library();
 
         // Adding sample books
-        library.addBook(new Book("The Great Gatsby", "F. Scott Fitzgerald", 1));
-        library.addBook(new Book("1984", "George Orwell", 2));
-        library.addBook(new Book("To Kill a Mockingbird", "Harper Lee", 3));
+        library.addBook(new Book("Mein Kamph", "Adolf Hitler", 1));
+        library.addBook(new Book("Macbeth", "William Shakespeare", 2));
+        library.addBook(new Book("Waste Land","T.S Eliot", 3));
 
         while (true) {
             System.out.println("\nLibrary Management System");
